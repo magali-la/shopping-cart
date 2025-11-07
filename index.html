@@ -11,7 +11,24 @@
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js"></script>
 </head>
-<body>
-    
+<body class="">
+    <header>
+        <h1>Lab 4.2: Shopping Cart</h1>
+    </header>
+    <main>
+        <section aria-label="shopping section">
+            <h2>Add items to your WishList so we can recommend new products in your cart!</h2>
+            <hr>
+            <label for="inputField">Add Items Here:</label><br>
+            <input id="inputField" type="text" class="fs-5"><br>
+            <button id="addItemButton" class="btn fs-5 btn-success"><i class="bi bi-cart-plus fs-4"></i>Add Item</button>
+        </section>
+        <hr>
+        <section aria-label="your cart section">
+            <h2>Your Cart</h2>
+            <hr>
+            <button id="removeItemButton" class="btn fs-5 btn-danger"><i class="bi bi-cart-dash fs-4"></i>Remove Last Item</button>
+        </section>
+    </main>
 </body>
 </html>
