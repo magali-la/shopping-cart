@@ -16,3 +16,14 @@ function removeItem() {
 function displayList() {
     console.log(shoppingList);
 }
+
+// function to create new filtered array from a term parameter
+function filterItems(searchTerm) {
+    let filteredShoppingList = shoppingList.filter(item => item.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    return filteredShoppingList;
+}
+
+shoppingList = ['vaSE', 'RUG', 'rugS']
+let search = 'rug';
+console.log(filterItems(search));
