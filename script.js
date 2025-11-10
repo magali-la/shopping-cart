@@ -33,6 +33,7 @@ window.addEventListener("load", () => {
     let inputEl = document.querySelector('#inputField');
     let addItemButton = document.querySelector('#addItemButton');
     let listEl = document.querySelector('#cart')
+    let removeItemButton = document.querySelector('#removeItemButton');
     
     // add event listener to the addItem button, check if the input value is not an empty string, then use addItem function
     addItemButton.addEventListener("click", function(){
@@ -56,5 +57,23 @@ window.addEventListener("load", () => {
             alert("Input required to add to cart!")
             return console.log('No input!')
         }
+    });
+
+    // add event listener to remove the last element in the array 
+    removeItemButton.addEventListener("click", function(){
+        // alert if the shopping list is empty
+        if (shoppingList.length == 0){
+            alert("Cart Empty. Nothing to remove!");
+            return console.log("Empty cart!")
+        }
+        
+        // get rid of the last element
+        shoppingList.pop();
+        displayList(shoppingList);
+        // define the last element
+        let lastElement = listEl.lastElementChild
+        // remove the last li added
+        listEl.removeChild(lastElement);
+        
     });
 });
