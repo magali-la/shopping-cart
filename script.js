@@ -2,7 +2,9 @@ let shoppingList = [];
 
 // function to add item into the array
 function addItem(item) {
-    shoppingList.push(item);
+    if (!shoppingList.includes(item)){
+        shoppingList.push(item);
+    }
 };
 
 // function to remove item from the array
