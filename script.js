@@ -1,29 +1,60 @@
-let shoppingList = [];
+window.addEventListener("load", () => {
+    let shoppingList = [];
 
-// function to add item into the array
-function addItem(item) {
-    if (!shoppingList.includes(item)){
-        shoppingList.push(item);
+    // function to add item into the array
+    function addItem(item) {
+        if (!shoppingList.includes(item)){
+            shoppingList.push(item);
+        }
+    };
+
+    // function to remove item from the array
+    function removeItem() {
+        shoppingList.pop();
     }
-};
 
-// function to remove item from the array
-function removeItem() {
-    shoppingList.pop();
-}
+    // function to show all the items in the shopping array in console
+    function displayList() {
+        console.log(shoppingList);
+    }
 
-// function to show all the items in the shopping array in console
-function displayList() {
-    console.log(shoppingList);
-}
+    // function to create new filtered array from a term parameter
+    function filterItems(searchTerm) {
+        let filteredShoppingList = shoppingList.filter(item => item.toLowerCase().includes(searchTerm.toLowerCase()));
 
-// function to create new filtered array from a term parameter
-function filterItems(searchTerm) {
-    let filteredShoppingList = shoppingList.filter(item => item.toLowerCase().includes(searchTerm.toLowerCase()));
+        return filteredShoppingList;
+    }
 
-    return filteredShoppingList;
-}
+    // shoppingList = ['vaSE', 'RUG', 'rugS']
+    // let search = 'rug';
+    // console.log(filterItems(search));
 
-shoppingList = ['vaSE', 'RUG', 'rugS']
-let search = 'rug';
-console.log(filterItems(search));
+    // event listeners to add to the button and list
+    let inputEl = document.querySelector('#inputField');
+    let addItemButton = document.querySelector('#addItemButton');
+    let listEl = document.querySelector('#cart')
+    
+    // add event listener to the addItem button, check if the input value is not an empty string, then use addItem function
+    addItemButton.addEventListener("click", function(){
+        let userInput = inputEl.value;
+        console.log(userInput);
+
+        if (userInput !== ''){
+            addItem(userInput);
+            displayList(shoppingList);
+            // create an li with the userInput
+            let listItemEl = document.createElement("li");
+            // add bootstrap list item class to the li so it displays as a tabled list
+            listItemEl.classList.add('list-group-item')
+            // add the term as innertext of the listItemEl
+            listItemEl.innerText = userInput;
+            // update child of ul to include the current shopping list state
+            listEl.appendChild(listItemEl);
+            // clear the input for the next search
+            inputEl.value = '';
+        } else {
+            alert("Input required to add to cart!")
+            return console.log('No input!')
+        }
+    });
+});
